@@ -1,0 +1,58 @@
+name: Build ImmortalWrt
+
+on:
+    workflow_dispatch:
+
+env:
+    CLONE_COMMAND: git clone -b master --depth 1 https://github.com/padavanonly/immortalwrt
+    REPO_NAME: immortalwrt
+    DEVICE: RM2100
+    
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Clone from github
+              uses: actions/checkout@v3
+
+            - name: Clone immortalwrt repo
+              run: |
+                  $CLONE_COMMAND
+
+            - name: Copy config to source code
+              run: |
+                  cp -f .config diy.sh $REPO_NAME/
+
+            - name: Get the dependency of immortalwrt
+              run: |
+                  cd $REPO_NAME
+                  ./scripts/feeds update -a && ./scripts/feeds install -a
+                  chmod +x diy.sh
+                  ./diy.sh
+
+            - name: Build immortalwrt
+              run: |
+                  cd $REPO_NAME
+                  make defconfig
+                  make download -j8
+                  find dl -size -1024c -exec ls -l {} \;
+                  find dl -size -1024c -exec rm -f {} \;
+                  make -j$(nproc) || make -j1 V=s
+
+            - name: Organize files
+              run: |
+                  cd $REPO_NAME/bin/targets/*/*
+                  rm -rf packages
+                  rm -rf version.buildinfo
+                  rm -rf feeds.buildinfo
+                  rm -rf config.buildinfo
+                  rm -rf profiles.json
+                  rm -rf sha256sums
+                  rm -rf *.manifest
+                  echo "FIRMWARE=$PWD" >> $GITHUB_ENV
+
+            - name: Upload build
+              uses: actions/upload-artifact@v3
+              with:
+                  name: OpenWrt_ImmortalWrt_${{ env.DEVICE }}
+                  path: ${{ env.FIRMWARE }}
