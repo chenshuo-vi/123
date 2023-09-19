@@ -4,7 +4,7 @@ on:
     workflow_dispatch:
 
 env:
-    CLONE_COMMAND: git clone -b master --depth 1 https://github.com/padavanonly/immortalwrt
+    CLONE_COMMAND: git clone -b openwrt-18.06-k5.4 --depth 1 https://github.com/immortalwrt/immortalwrt
     REPO_NAME: immortalwrt
     DEVICE: RM2100
     
