@@ -8,6 +8,7 @@ git clone -b 18.06 https://github.com/chenshuo-l/luci-theme-argon.git package/lu
 #修改主题
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
+sed -i '/dropbear/d' include/target.mk
 
 #添加定时重启插件
 #sed -i 's/luci-app-filetransfer/luci-app-autoreboot/g' include/target.mk
