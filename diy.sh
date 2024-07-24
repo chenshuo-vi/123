@@ -2,10 +2,10 @@
 sed -i 's/192.168.1.1/192.168.2.1/g' package/base-files/files/bin/config_generate
 
 #下载主题应用
-#rm -rf feeds/luci/themes/luci-theme-argon
-#git clone -b 18.06 https://github.com/chenshuo-l/luci-theme-argon.git package/luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-design
-git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
+rm -rf feeds/luci/themes/luci-theme-argon
+git clone -b 18.06 https://github.com/chenshuo-l/luci-theme-argon.git package/luci-theme-argon
+#rm -rf feeds/luci/themes/luci-theme-design
+#git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
 
 #修改主题
 sed -i 's/luci-theme-bootstrap/luci-theme-design/g' feeds/luci/collections/luci/Makefile
