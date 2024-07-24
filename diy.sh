@@ -35,10 +35,13 @@ sed -i '/luci-lib-fs/a \	luci-app-ttyd \\' include/target.mk
 sed -i 's/3/7/g' feeds/luci/applications/luci-app-autoreboot/root/etc/config/autoreboot
 sed -i '6s/0/1/' feeds/luci/applications/luci-app-autoreboot/root/etc/config/autoreboot
 
-#删除upnp dropbear
+#删除upnp dropbear turboacc eqos mwan3helper
 sed -i 's/luci-app-upnp\ //g' target/linux/ramips/mt7621/target.mk
 #sed -i '/dropbear/d' include/target.mk
-sed -i 's/ipv6helper\ //g' target/linux/ramips/Makefile
+#sed -i 's/ipv6helper\ //g' target/linux/ramips/Makefile
+sed -i 's/luci-app-eqos-mtk\ //g' target/linux/ramips/Makefile
+sed -i 's/luci-app-turboacc-mtk\ //g' target/linux/ramips/Makefile
+sed -i 's/luci-app-mwan3helper-chinaroute\ //g' target/linux/ramips/mt7621/target.mk
 
 #修复日志错误
 sed -i '/restart/d' feeds/luci/applications/luci-app-autoreboot/root/etc/init.d/autoreboot
