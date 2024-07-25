@@ -26,9 +26,9 @@ sed -i '1,/EncrypType=NONE/s/EncrypType=NONE/EncrypType=AES/' package/emortal/mt
 sed -i 's/WPAPSK1=12345678/WPAPSK1=987654321/g' package/emortal/mt-drivers/mt_wifi/files/mt7603.dat
 
 #添加插件
-#sed -i 's/luci-app-filetransfer/luci-app-autoreboot/g' include/target.mk
-sed -i '/luci-lib-fs/a \	luci-app-autoreboot \\' include/target.mk
-#sed -i '/luci-lib-fs/a \	luci-app-filebrowser \\' include/target.mk
+sed -i 's/luci-app-filetransfer/luci-app-autoreboot/g' include/target.mk
+#sed -i '/luci-lib-fs/a \	luci-app-autoreboot \\' include/target.mk
+sed -i '/luci-lib-fs/a \	luci-app-filebrowser \\' include/target.mk
 sed -i '/luci-lib-fs/a \	luci-app-ttyd \\' include/target.mk
 
 #设置定时重启插件
