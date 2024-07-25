@@ -8,7 +8,7 @@ git clone -b 18.06 https://github.com/chenshuo-l/luci-theme-argon.git package/lu
 #git clone https://github.com/gngpp/luci-theme-design.git  package/luci-theme-design
 
 #修改主题
-sed -i 's/luci-theme-bootstrap/luci-theme-design/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 #修改wifi信息
 #5g
