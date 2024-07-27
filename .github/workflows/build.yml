@@ -13,7 +13,7 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: Clone from github
-              uses: actions/checkout@v4
+              uses: actions/checkout@main
 
             - name: Clone immortalwrt repo
               run: |
@@ -56,7 +56,7 @@ jobs:
                   echo "FIRMWARE=$PWD" >> $GITHUB_ENV
 
             - name: Upload build
-              uses: actions/upload-artifact@v4
+              uses: actions/upload-artifact@main
               with:
                   name: OpenWrt_ImmortalWrt_${{ env.DEVICE }}
                   path: ${{ env.FIRMWARE }}
