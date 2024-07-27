@@ -11,7 +11,7 @@ KERNELNAME:=vmlinux vmlinuz
 IMAGES_DIR:=../../..
 
 DEFAULT_PACKAGES += wpad-basic-wolfssl swconfig kmod-ramips_hnat wireless-tools l1profile\
-			iptables-mod-ipopt iptables-mod-conntrack-extra mtkhqos_util\
+			iptables-mod-ipopt iptables-mod-conntrack-extra\
 
 define Target/Description
 	Build firmware images for Ralink MT7621 based boards.
