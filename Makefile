@@ -18,6 +18,6 @@ define Target/Description
 endef
 
 include $(INCLUDE_DIR)/target.mk
-DEFAULT_PACKAGES += kmod-leds-gpio kmod-gpio-button-hotplug ipv6helper zram-swap luci-app-eqos-mtk luci-app-turboacc-mtk
+DEFAULT_PACKAGES += kmod-leds-gpio kmod-gpio-button-hotplug ipv6helper zram-swap
 
 $(eval $(call BuildTarget))
