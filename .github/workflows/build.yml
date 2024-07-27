@@ -22,13 +22,17 @@ jobs:
             - name: Copy config to source code
               run: |
                   cp -f .config diy.sh $REPO_NAME/
+                  rm -rf $REPO_NAME/target/linux/ramips/Makefile
+                  rm -rf $REPO_NAME/target/linux/ramips/mt7621/target.mk
+                  cp -f Makefile $REPO_NAME/target/linux/ramips
+                  cp -f target.mk $REPO_NAME/target/linux/ramips/mt7621
 
             - name: Get the dependency of immortalwrt
               run: |
                   cd $REPO_NAME
                   ./scripts/feeds update -a && ./scripts/feeds install -a
                   chmod +x diy.sh
-                  ./diy.sh
+                  ./diy.sh                  
 
             - name: Build immortalwrt
               run: |
